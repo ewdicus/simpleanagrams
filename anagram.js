@@ -13,6 +13,11 @@ function trieForLetter(letter){
   return trie;
 }
 
+function isWord(word){
+  var trie = trieForLetter(word[0]);
+  return trie.contains(word);
+}
+
 exports.for = function() {
   var hrstart = process.hrtime();
   var a_trie = trieForLetter('a');
@@ -30,6 +35,22 @@ exports.for = function() {
   console.log(start.getChild('b').isTerminal())
 };
 
-exports.validate = function(){
-  return true; // TODO
+exports.validate = function(query, anagram){
+  // Remove spaces, sort by letters and compare
+  var isAnagram = query.split('').sort().join('') === anagram.replace(/\s+/g, '').split('').sort().join('');
+  if(isAnagram === false){
+    console.log("Not anagram");
+    return false;
+  }
+
+  // Check if all words in anagram are real
+  var words = anagram.split(' ');
+  for(var i = 0; i < words.length; ++i){
+    if(isWord(words[i]) === false){
+      console.log("Not a word: ", words[i]);
+      return false;
+    }
+  }
+
+  return true;
 }
