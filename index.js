@@ -1,31 +1,63 @@
+'use strict';
+
 var express = require('express');
+var anagram = require('./anagram.js');
 var app = express();
 
 app.set('port', (process.env.PORT || 5000));
 app.set('view engine', 'ejs');
 
+// Views for ejs in "views" directory (by default)
 // Static files in "static" directory
 app.use(express.static('static'));
 
-// View for ejs in "views" directory (by default)
 
 // Routes
 app.get('/', function(request, response) {
   response.render('pages/index');
 });
 app.get('/generate', function(request, response){
+
+  // Bad response if we don't have a query
   if(request.query.q == undefined){
-    response.status(400).send('Bad Request');
+    return response.status(400).send('Must include a query: ?q=word');
   }
-  // TODO
-  response.json(request.query.q);
+
+  var query = request.query.q;
+
+  // Make sure the query is just letters
+  if(/^[a-zA-Z]+$/.test(query) === false){
+    response.status(400).send('Query must only contain letters');
+  }
+
+  // Get an anagram for the word
+  var result = anagram.for(query.toLowerCase());
+  response.json(result);
 });
 app.get('/validate', function(request, response){
+
+  // Bad response if we don't have a query and an anagram to test against
   if(request.query.q == undefined || request.query.anagram == undefined){
-    response.status(400).send('Bad Request');
+    response.status(400).send('Must include a query and anagram: ?q=word&anagram=another');
   }
-  // TODO
-  response.json(true);
+
+  var query = request.query.q;
+  var test_anagram = request.query.anagram
+
+  // Make sure the query is just letters
+  if(/^[a-zA-Z]+$/.test(query) === false){
+    response.status(400).send('Query must only contain letters');
+  }
+
+  // Make sure the anagram is just letters and spaces
+  // Make sure the query is just letters
+  if(/^[a-zA-Z\ ]+$/.test(test_anagram) === false){
+    response.status(400).send('Anagram must only contain letters and spaces');
+  }
+
+  // Validate the anagram
+  var result = anagram.validate(query.toLowerCase(), test_anagram.toLowerCase());
+  response.json(result);
 });
 
 
