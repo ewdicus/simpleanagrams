@@ -1,0 +1,20 @@
+{
+  "name": "anagram",
+  "version": "0.0.1",
+  "description": "Anagram Server",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Elliott Dicus",
+  "license": "MIT",
+  "dependencies": {
+    "ejs": "^2.3.4",
+    "express": "^4.13.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.8.1"
+  }
+}
