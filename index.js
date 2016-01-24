@@ -27,7 +27,7 @@ app.get('/generate', function(request, response){
 
   // Make sure the query is just letters
   if(/^[a-zA-Z]+$/.test(query) === false){
-    response.status(400).send('Query must only contain letters');
+    return response.status(400).send('Query must only contain letters');
   }
 
   // Get an anagram for the word
@@ -46,13 +46,13 @@ app.get('/validate', function(request, response){
 
   // Make sure the query is just letters
   if(/^[a-zA-Z]+$/.test(query) === false){
-    response.status(400).send('Query must only contain letters');
+    return response.status(400).send('Query must only contain letters');
   }
 
   // Make sure the anagram is just letters and spaces
   // Make sure the query is just letters
   if(/^[a-zA-Z\ ]+$/.test(test_anagram) === false){
-    response.status(400).send('Anagram must only contain letters and spaces');
+    return response.status(400).send('Anagram must only contain letters and spaces');
   }
 
   // Validate the anagram
