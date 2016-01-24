@@ -20,8 +20,8 @@ app.get('/generate', function(request, response){
   // TODO
   response.json(request.query.q);
 });
-app.get('validate', function(request, response){
-  if(request.query.q == undefined || request.query.anagram){
+app.get('/validate', function(request, response){
+  if(request.query.q == undefined || request.query.anagram == undefined){
     response.status(400).send('Bad Request');
   }
   // TODO
