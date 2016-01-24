@@ -15,3 +15,14 @@
 * If we don't find a word end, try the next character
 * If we run out of characters, grab the longest word and break it back into
   "left over" characters. Try again with a character from that.
+
+
+# Licenses
+
+
+## English Open Word List
+UK Advanced Cryptics Dictionary Licensing Information:
+
+Copyright © J Ross Beresford 1993-1999. All Rights Reserved. The following restriction is placed on the use of this publication: if the UK Advanced Cryptics Dictionary is used in a software package or redistributed in any form, the copyright notice must be prominently displayed and the text of this document must be included verbatim.
+
+There are no other restrictions: I would like to see the list distributed as widely as possible.
