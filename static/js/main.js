@@ -76,7 +76,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
     var query_input = document.getElementById('generate_query_input');
     getAjax('/generate/?q=' + query_input.value, function(data){
-      helpSuccess('generate_query_help', data);
+      if(data){
+        helpSuccess('generate_query_help', data);
+      }else{
+        helpError('generate_query_help', "No Anagrams Found");
+      }
     }, function(data){
       helpError('generate_query_help', data);
     });
@@ -85,7 +89,23 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   function validateAnagram(){
-    alert("validate");
+    submitWorking('validate_submit');
+    hideHelp('validate_anagram_help');
+
+    var query_input = document.getElementById('validate_query_input');
+    var anagram_input = document.getElementById('validate_anagram_input');
+    getAjax('/validate/?q=' + query_input.value + '&anagram=' + anagram_input.value, function(data){
+      var result = JSON.parse(data);
+      if(result.valid){
+        helpSuccess('validate_anagram_help', "Valid Anagram");
+      }else{
+        helpError('validate_anagram_help', result.reason);
+      }
+    }, function(data){
+      helpError('validate_anagram_help', data);
+    });
+
+    submitNormal('validate_submit');
   }
 
   // Expose form handler functions
