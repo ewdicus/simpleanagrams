@@ -32,4 +32,9 @@ describe('generate', function () {
       {'valid':true});
     done();
   });
+  it('should fail to find an anagram for "light"', function (done) {
+    var result = anagram.for('light');
+    assert(result === "");
+    done();
+  });
 });
