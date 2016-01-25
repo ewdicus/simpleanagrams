@@ -81,11 +81,11 @@ document.addEventListener("DOMContentLoaded", function() {
       }else{
         helpError('generate_query_help', "No Anagrams Found");
       }
+      submitNormal('generate_submit');
     }, function(data){
       helpError('generate_query_help', data);
+      submitNormal('generate_submit');
     });
-
-    submitNormal('generate_submit');
 
     return false; // Don't submit normally
   }
@@ -103,11 +103,12 @@ document.addEventListener("DOMContentLoaded", function() {
       }else{
         helpError('validate_anagram_help', result.reason);
       }
+      submitNormal('validate_submit');
     }, function(data){
       helpError('validate_anagram_help', data);
+      submitNormal('validate_submit');
     });
 
-    submitNormal('validate_submit');
 
     return false; // Don't submit normally
   }
