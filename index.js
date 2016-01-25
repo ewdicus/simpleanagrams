@@ -25,6 +25,12 @@ app.get('/generate', function(request, response){
 
   var query = request.query.q;
 
+  // A bit arbitrary, but long queries take a very long time. This seems ok
+  var max_query_length = 12
+  if(query.length > max_query_length){
+    return response.status(400).send('Maximum query length is ' + max_query_length);
+  }
+
   // Make sure the query is just letters
   if(/^[a-zA-Z]+$/.test(query) === false){
     return response.status(400).send('Query must only contain letters');
