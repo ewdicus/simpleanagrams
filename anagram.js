@@ -28,7 +28,7 @@ function shuffleArray(array) {
 }
 
 function buildAnagram(trie, word, letters){
-  console.log("\tCurrent word: ",  word);
+  // console.log("\tCurrent word: ",  word);
   if(trie.isTerminal()){
     return word;
   }else if(letters.length == 0){
@@ -37,7 +37,7 @@ function buildAnagram(trie, word, letters){
   var letter = letters.pop();
   var nextTrie = trie.getChild(letter);
   if(nextTrie){
-    console.log("\t\texploring: ", letter);
+    // console.log("\t\texploring: ", letter);
     return buildAnagram(nextTrie, word + letter, letters);
   }
 }
@@ -59,7 +59,7 @@ exports.for = function(query){
 
     var words = [];
 
-    console.log("permutation: ", permutation);
+    // console.log("permutation: ", permutation);
     while(permutation.length > 0){
 
       // // Take each letter in the permutation and pop it off
@@ -70,11 +70,11 @@ exports.for = function(query){
       // If we have a valid word, add it
       if(result && result !== query){
         words.push(result);
-        console.log("\tfound: ", words);
+        // console.log("\tfound: ", words);
       }else{
         // Otherwise, this permutation isn't going to work - so we'll clear
         // the words, and break out of this permutation
-        console.log("\tNOPE");
+        // console.log("\tNOPE");
         words = [];
         break;
       }
@@ -83,12 +83,12 @@ exports.for = function(query){
     // If we have words, and we've used all the permutations letters, this is a
     // valid anagram
     if(words.length){
-      return words;
+      return words.join(' ');
     }
   }
 
   // We didn't find any anagrams that used all the letters
-  return [];
+  return '';
 };
 
 // Validate that an anagram of a query is correct. This includes basic letter
