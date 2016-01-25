@@ -86,6 +86,8 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     submitNormal('generate_submit');
+
+    return false; // Don't submit normally
   }
 
   function validateAnagram(){
@@ -106,6 +108,8 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     submitNormal('validate_submit');
+
+    return false; // Don't submit normally
   }
 
   // Expose form handler functions
