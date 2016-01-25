@@ -47,7 +47,7 @@ function buildAnagram(trie, word, letters){
 exports.for = function(query){
 
   // Shuffle so we start with different permutations each time
-  var shuffledWord = shuffleArray(query.split(''));
+  var shuffledWord = shuffleArray(query.replace(/\s+/g, '').split(''));
   var permutationGenerator = combinatorics.permutation(shuffledWord);
 
   // Check permutations until we have a set of anagrams, or we run out of
@@ -96,7 +96,7 @@ exports.for = function(query){
 exports.validate = function(query, anagram){
 
   // Remove spaces, sort by letters and compare
-  var sortedQuery = query.split('').sort().join('');
+  var sortedQuery = query.replace(/\s+/g, '').split('').sort().join('');
   var sortedAnagram = anagram.replace(/\s+/g, '').split('').sort().join('');
   if(sortedQuery !== sortedAnagram){
     return {'valid':false, 'reason':'Letters do not match'};

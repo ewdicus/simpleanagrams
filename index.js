@@ -31,9 +31,9 @@ app.get('/generate', function(request, response){
     return response.status(400).send('Maximum query length is ' + max_query_length);
   }
 
-  // Make sure the query is just letters
-  if(/^[a-zA-Z]+$/.test(query) === false){
-    return response.status(400).send('Query must only contain letters');
+  // Make sure the query is just letters and spaces
+  if(/^[a-zA-Z\ ]+$/.test(query) === false){
+    return response.status(400).send('Query must only contain letters and spaces');
   }
 
   // Get an anagram for the word
@@ -50,9 +50,9 @@ app.get('/validate', function(request, response){
   var query = request.query.q;
   var test_anagram = request.query.anagram
 
-  // Make sure the query is just letters
-  if(/^[a-zA-Z]+$/.test(query) === false){
-    return response.status(400).send('Query must only contain letters');
+  // Make sure the query is just letters and spaces
+  if(/^[a-zA-Z\ ]+$/.test(query) === false){
+    return response.status(400).send('Query must only contain letters and spaces');
   }
 
   // Make sure the anagram is just letters and spaces
