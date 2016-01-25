@@ -1,3 +1,11 @@
+# Setup
+
+Run `npm install` and `npm start`.
+
+To use nodemon to restart when changes are made run `npm run-script dev`.
+
+Some simple tests can be ran with `npm test`.
+
 # Licenses
 
 MIT License
