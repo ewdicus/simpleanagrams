@@ -1,10 +1,71 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Simple Anagram Server</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="/css/cover.css" />
   <link rel="stylesheet" type="text/css" href="/css/main.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <script src="/js/main.js"></script>
 </head>
 
 <body>
-  Hello!
+  <div class="site-wrapper">
+
+    <div class="site-wrapper-inner">
+
+      <div class="cover-container">
+
+        <div class="masthead clearfix">
+          <div class="inner">
+            <h3 class="masthead-brand">Simple Anagram Server</h3>
+          </div>
+        </div>
+
+        <div class="inner cover">
+          <h1 class="cover-heading">Generate an Anagram</h1>
+          <form onsubmit="return anagramServer.generateAnagram()">
+            <div id="generate_query_group" class="form-group">
+              <input type="text" class="form-control" id="generate_query_input" placeholder="Panama">
+              <p id="generate_query_help" class="hidden help-block"></p>
+            </div>
+            <p class="lead">
+              <button type="submit" id="generate_submit" class="btn btn-lg btn-default">Submit</button>
+            </p>
+          </form>
+        </div>
+
+        <div class="inner cover">
+          <h1 class="cover-heading">Validate an Anagram</h1>
+          <form onsubmit="return anagramServer.validateAnagram()">
+            <div id="validate_query_group" class="form-group">
+              <input type="text" class="form-control" id="validate_query_input" placeholder="Panama">
+              <p id="validate_query_help" class="hidden help-block"></p>
+            </div>
+            <div id="validate_anagram_group" class="form-group">
+              <input type="text" class="form-control" id="validate_anagram_input" placeholder="ma a nap">
+              <p id="validate_anagram_help" class="hidden help-block"></p>
+            </div>
+            <p class="lead">
+              <button type="submit" id="validate_submit" class="btn btn-lg btn-default">Submit</button>
+            </p>
+          </form>
+        </div>
+
+        <div class="mastfoot">
+          <div class="inner">
+            <p>Wordlist from the <a href="http://dreamsteep.com/projects/the-english-open-word-list.html">English Open Word List</a></p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
 </body>
 </html>
